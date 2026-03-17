@@ -1,0 +1,40 @@
+---
+layout: base.njk
+---
+{%- set allPosts = collections.posts -%}
+{%- set currentIndex = -1 -%}
+{%- for post in allPosts -%}
+  {%- if post.url === page.url -%}
+    {%- set currentIndex = loop.index0 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<div class="post-header">
+  <a href="/" class="back">← cd ~/writing</a>
+  <div class="prompt" style="margin-top:24px;">amine@web <span>~/writing $</span> cat {{ page.fileSlug }}.md</div>
+  <h1>{{ title }}</h1>
+  <div class="meta">
+    {{ date | isoDate }}
+    {%- if tag %} <span class="tag">{{ tag }}</span>{% endif %}
+    {%- if readtime %} {{ readtime }}{% endif %}
+  </div>
+</div>
+
+<div class="post-body">
+  {{ content | safe }}
+</div>
+
+<div class="post-nav">
+  <div>
+    {%- if allPosts[currentIndex + 1] %}
+      <span class="label">← prev</span>
+      <a href="{{ allPosts[currentIndex + 1].url }}">{{ allPosts[currentIndex + 1].data.title }}</a>
+    {%- endif %}
+  </div>
+  <div style="text-align:right;">
+    {%- if currentIndex > 0 %}
+      <span class="label">next →</span>
+      <a href="{{ allPosts[currentIndex - 1].url }}">{{ allPosts[currentIndex - 1].data.title }}</a>
+    {%- endif %}
+  </div>
+</div>

@@ -1,0 +1,62 @@
+---
+layout: base.njk
+title: amine el qaraoui
+---
+<header>
+  <div class="prompt">amine@web <span>~ $</span> cat about.txt</div>
+  <h1><strong>amine el qaraoui</strong> — software engineer</h1>
+  <p style="font-size:0.78rem;color:var(--fg-faint);margin-top:2px;">systems · cryptography · distributed networks<span class="cursor"></span></p>
+  <nav>
+    <a href="#writing">ls writing/</a>
+    <a href="#projects">ls projects/</a>
+    <a href="#now">cat now.txt</a>
+    <a href="#">github</a>
+    <a href="#">x.com</a>
+    <a href="#">email</a>
+  </nav>
+</header>
+
+<div class="bio">
+  <p>i build infrastructure for decentralized systems — validator networks, indexers, protocol implementations. interested in making things that are correct, fast, and as simple as the problem allows.</p>
+  <div class="status"><span class="dot"></span> available for interesting problems</div>
+</div>
+
+<hr class="divider">
+
+<section id="writing">
+  <div class="section-label">~/writing</div>
+  <ul class="post-list">
+    {%- for post in collections.posts %}
+    <li class="post-item">
+      <a href="{{ post.url }}" class="post-link">{{ post.data.title }}</a>
+      <span class="post-meta">
+        {%- if post.data.tag %}<span class="tag">{{ post.data.tag }}</span>{% endif %}
+        {{ post.date | isoDate }}
+      </span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<hr class="divider">
+
+<section id="projects">
+  <div class="section-label">~/projects</div>
+  <div class="project-grid">
+    <div class="project"><span class="project-name">arch-network</span><span class="project-desc">validator node architecture</span></div>
+    <div class="project"><span class="project-name">rust-indexer</span><span class="project-desc">blockchain data pipeline</span></div>
+    <div class="project"><span class="project-name">frost-signer</span><span class="project-desc">threshold signature scheme</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="now">
+  <div class="section-label">~/now.txt</div>
+  <ul class="now-list">
+    <li><span class="now-key">building</span> infrastructure for decentralized systems. the plumbing nobody sees.</li>
+    <li><span class="now-key">reading</span> designing data-intensive applications. again.</li>
+    <li><span class="now-key">thinking</span> about trust in trustless environments.</li>
+    <li><span class="now-key">location</span> somewhere with wifi and too much coffee.</li>
+  </ul>
+</section>
